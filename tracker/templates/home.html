@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center my-5 py-5">
+  <h1 class="display-4 fw-bold text-info mb-3">Welcome to Expense Tracker 💰</h1>
+  
+  <p class="lead text-light mb-4">
+    Track your expenses. Stay within budget.
+  </p>
+
+  <div class="d-flex justify-content-center gap-3 mt-4">
+    <a href="{% url 'expense_list' %}" class="btn btn-outline-info btn-lg">
+      📋 View Expenses
+    </a>
+    <a href="{% url 'add_expense' %}" class="btn btn-outline-success btn-lg">
+      ➕ Add Expense
+    </a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card bg-dark text-white shadow p-4 rounded">
+        <h2 class="text-center mb-4 text-info fw-bold">➕ Add New Expense</h2>
+
+        <form method="POST" novalidate>
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" id="title" class="form-control bg-secondary text-white border-0 shadow-sm" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount (₹)</label>
+                <input type="number" name="amount" id="amount" step="0.01" class="form-control bg-secondary text-white border-0 shadow-sm" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select name="category" id="category" class="form-select bg-secondary text-white border-0 shadow-sm">
+                    <option value="Food">🍔 Food</option>
+                    <option value="Travel">✈️ Travel</option>
+                    <option value="Shopping">🛍 Shopping</option>
+                    <option value="Bills">📄 Bills</option>
+                    <option value="Other">📦 Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" name="date" id="date" class="form-control bg-secondary text-white border-0 shadow-sm" required>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success px-4 me-2">💾 Save</button>
+                <a href="{% url 'expense_list' %}" class="btn btn-outline-light">← Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

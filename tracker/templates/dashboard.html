@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Dashboard Heading -->
+    <h1 class="text-center text-info fw-bold mb-5">📊 Your Dashboard</h1>
+
+    <!-- Total Spent Section -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <div class="card bg-dark text-white text-center p-4 shadow-sm rounded">
+                <h5 class="mb-2">Total Spent</h5>
+                <h2 class="text-success">₹{{ total }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Monthly Breakdown -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-secondary text-white fw-bold">
+                    📅 Monthly Breakdown
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for month, amount in monthly_expenses.items %}
+                        <li class="list-group-item d-flex justify-content-between bg-dark text-light">
+                            <span>{{ month }}</span>
+                            <span>₹{{ amount }}</span>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item bg-dark text-light text-center">No expenses yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="text-center">
+        <a href="{% url 'add_expense' %}" class="btn btn-success me-3 px-4">➕ Add Expense</a>
+        <a href="{% url 'expense_list' %}" class="btn btn-outline-light px-4">📋 View All</a>
+    </div>
+</div>
+{% endblock %}
+
